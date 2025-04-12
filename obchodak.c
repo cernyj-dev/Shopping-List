@@ -213,7 +213,7 @@ int main(){
 					printf(" %d. %s -> #%d %s\n",counter, all_list_items[list_item].name, aisle , all_aisle_items[all_list_items[list_item].pos_in_aisle].prod);
 					counter ++;
 				}
-				// mark the end
+				// this list item was not found in the supermarket
 				if(aisle == num_of_aisles+1 && all_list_items[list_item].num_of_found == 0 && all_list_items[list_item].list_num == list){
 					printf(" %d. %s -> N/A\n", counter, all_list_items[list_item].name);
 					counter++;
