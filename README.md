@@ -1,20 +1,69 @@
-# Informace o úloze #
+# Smart Shopping List Optimizer
 
-Úkolem je vyvinout program, který optimalizuje nákupy v supermarketech a zkracuje čas strávený hledáním položek na nákupních seznamech. Nákupy v supermarketech jsou pro některé lidi příjemnou aktivitou (shopaholic), zatímco pro jiné představují noční můru (shopafobic). Zatímco shopaholici si užívají procházení regály a zkoumání, co si koupit, shopafobici se raději drží přesně stanoveného seznamu a snaží se minimalizovat čas strávený v obchodě. Cílem je uspořádat nákupní seznam tak, aby se minimalizovalo bloudění supermarketem a zamezilo se opakovanému chození mezi regály.
+> 🛒 **A tool to streamline supermarket shopping by organizing and optimizing item lists based on store layout.**
 
-__Specifikace:__ Program dostane jako vstup dvě věci: rozmístění zboží v regálech a nákupní seznam. Regály jsou očíslovány od 0 do N a každý regál obsahuje seznam položek (např. "tomato", "milk", "cheese"). Nákupní seznam může obsahovat položky jako "tomato", ale v obchodě mohou být dostupné varianty jako "red tomato", "yellow tomato" nebo "cherry tomatoes". Program bude hledat položky na regálech a pokud nenajde přesnou shodu, pokusí se najít položku, jejíž název obsahuje požadovaný název jako podřetězec (při porovnávání nebude rozlišovat velká a malá písmena). Pokud položka není k dispozici v obchodě, bude přesunuta na konec seznamu.
+---
 
-Po zpracování seznamu program výstupně upraví seznam položek, a to tak, že:
+## Project Overview
 
-- Seřadí položky podle regálů (s rostoucím číslem regálu).
-- Pokud je položka ve stejném regálu vícekrát, zachová původní pořadí.
-- Pokud je položka k dispozici na více regálech, bude vybrána první možnost.
-- Pokud není položka v obchodě k dispozici, bude umístěna na konec seznamu.
-- Vstupní validace: Program musí také validovat vstupní data a detekovat chyby. Za chybu se považuje:
-- Chybějící číslo regálu při zadávání zboží (regál 0 musí být první).
-- Neplatné číslo regálu nebo nesprávná sekvence čísel (regály musí být seřazeny 0, 1, 2, ...).
-- Chybějící prázdná řádka za seznamem zboží.
+This program is designed to **optimize shopping trips in supermarkets** by reorganizing shopping lists based on the layout of store shelves. The goal is to reduce time spent wandering between aisles and improve overall shopping efficiency.
 
-__Účel programu:__ Cílem je nejen minimalizovat čas strávený hledáním zboží v supermarketu, ale také efektivně uspořádat nákupní seznam, což může výrazně zvýšit pohodlí a zrychlit nákupní proces. Program by měl zvládnout základní testy s jednoduchým algoritmem, ale pro bonus je třeba implementovat efektivnější algoritmus pro zpracování dlouhých nákupních seznamů.
+People approach shopping differently — while *shopaholics* enjoy exploring store shelves and discovering new products, *shopaphobics* prefer to follow a strict list and complete the trip as quickly as possible. This tool caters especially to the latter by minimizing unnecessary backtracking in the store.
 
-Tento program může být užitečný nejen pro běžné nákupy, ale i pro optimalizaci v obchodních aplikacích, kde je důležitá efektivita a rychlost při hledání položek na regálech.
+---
+
+## Functionality
+
+The program takes two inputs:
+1. **Shelf Layout** – a list of shelves numbered from `0` to `N`, each containing a set of items (e.g., `"tomato"`, `"milk"`, `"cheese"`).
+2. **Shopping List** – a list of items the user wishes to purchase (e.g., `"tomato"`).
+
+### Matching Logic:
+- The program attempts to **match each shopping list item** with items on the shelves.
+- If an **exact match** is not found, it searches for a **partial match** (i.e., the item appears as a case-insensitive substring in a shelf item, such as `"red tomato"` for `"tomato"`).
+- If no match is found, the item is placed at the **end of the final list**.
+
+### Output:
+After processing, the shopping list is reordered based on:
+- **Shelf number (ascending)**.
+- If multiple items are on the **same shelf**, their **original order is preserved**.
+- If an item exists on **multiple shelves**, the **first match** is used.
+- **Unavailable items** are placed at the **end** of the list.
+
+---
+
+## Input Validation
+
+The program includes input validation and reports errors in the following cases:
+- Missing shelf number when defining shelf items (shelf `0` must appear first).
+- Invalid shelf numbering or incorrect sequence (shelves must follow the order `0, 1, 2, ...`).
+- Missing empty line separating the shelf layout from the shopping list.
+
+---
+
+## Purpose and Use Cases
+
+The tool is primarily intended to:
+- **Reduce shopping time** by organizing lists efficiently.
+- **Improve comfort** for users who prefer fast and structured shopping.
+- Serve as a base for **business applications** where quick item retrieval is critical (e.g., inventory picking, logistics optimization).
+
+---
+
+## Implementation Notes
+
+- The program is expected to pass basic functionality tests with a **simple algorithm**.
+- For **bonus functionality**, a more **efficient algorithm** is required to handle long shopping lists and complex layouts.
+
+---
+
+## Example Use Case
+
+Imagine entering a supermarket with a shopping list of 15 items spread across 10 aisles. Rather than walking back and forth between shelves, the optimized list guides the shopper through the store in a logical sequence, improving both **speed** and **convenience**.
+
+---
+
+## License
+
+This project is intended for educational and demonstration purposes.
+
