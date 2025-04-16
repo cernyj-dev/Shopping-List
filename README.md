@@ -50,13 +50,6 @@ The tool is primarily intended to:
 
 ---
 
-## Implementation Notes
-
-- The program is expected to pass basic functionality tests with a **simple algorithm**.
-- For **bonus functionality**, a more **efficient algorithm** is required to handle long shopping lists and complex layouts.
-
----
-
 ## Example Use Case
 
 Imagine entering a supermarket with a shopping list of 15 items spread across 10 aisles. Rather than walking back and forth between shelves, the optimized list guides the shopper through the store in a logical sequence, improving both **speed** and **convenience**.
